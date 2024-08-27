@@ -135,8 +135,7 @@ In the example below, the page to be analysed is : https://www.example.com/test.
 ```
 {
     "projectName": "Demo",
-    "url": "https://www.example.com/test.html",
-    "userFlow": {
+    "login": {
         "authentication_url": "https://www.login.com/",
         "steps": [
             {

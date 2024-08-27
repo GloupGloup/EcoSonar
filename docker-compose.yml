@@ -15,6 +15,15 @@ services:
       - mongodb_data:/data
       - ./docker-compose/docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
+  validator:
+    image: ghcr.io/validator/validator:latest
+    container_name: validator-ecosonar
+    ports:
+      - "8888:8888"
+    networks:
+      - sonarnet
+    restart: unless-stopped
+
   api-ecosonar:
     build: ./EcoSonar-API
     container_name: ecosonar_api
@@ -24,6 +33,7 @@ services:
       - sonarnet
     depends_on:
       - mongodb
+      - validator
     environment:
       ECOSONAR_ENV_CLOUD_PROVIDER: local
       ECOSONAR_ENV_DB_NAME: EcoSonar
@@ -31,6 +41,8 @@ services:
       ECOSONAR_ENV_CLUSTER: ecosonar:ecosonar@mongodb
       ECOSONAR_ENV_SONARQUBE_SERVER_URL: http://localhost:9000
       ECOSONAR_ENV_LOCAL_DEV_SERVER_URL: http://localhost:3000
+      ECOSONAR_ENV_ALLOW_EXTERNAL_API: 'true'
+      ECOSONAR_ENV_VALIDATOR_URL: validator:8888
     restart: unless-stopped
 
 

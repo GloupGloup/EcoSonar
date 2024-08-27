@@ -32,7 +32,7 @@ export default function AnalysisPerProjectPanel (props) {
 
   return (
     <div>
-      <GreenItPanelPerProject analysisForProjectGreenit={analysisForProjectGreenit} projectName={projectName} error={error} found={found} />
+     {allowW3c === 'true' && <W3CPanelPerProject loading={loading} error={error} projectName={projectName} analysisForProjectW3c={analysisForProjectW3c} />}
 
       <LightHousePanelPerProject
         loading={loading}
@@ -43,7 +43,7 @@ export default function AnalysisPerProjectPanel (props) {
         lighthouseAccessibilityForProject={lighthouseAccessibilityForProject}
       />
 
-     {allowW3c === 'true' && <W3CPanelPerProject loading={loading} error={error} projectName={projectName} analysisForProjectW3c={analysisForProjectW3c} />}
+      <GreenItPanelPerProject analysisForProjectGreenit={analysisForProjectGreenit} projectName={projectName} error={error} found={found} />
 
       {found && (
         <GraphPanelForProject

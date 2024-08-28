@@ -208,10 +208,10 @@ export default class EcoSonarAnalysisPage extends React.PureComponent {
       : (
         <div className='display-flex-row'>
           <div className='index-panel'>
-            <EcoIndexPanel loading={this.state.loading} analysis={this.state.analysisForProjectGreenit} found={this.state.found} />
+            {this.state.allowW3c === 'true' && <W3cPanel loading={this.state.loading} analysis={this.state.analysisForProjectW3c} found={this.state.found} />}
             <LighthousePerformancePanel loading={this.state.loading} analysis={this.state.lighthousePerformanceForProject} found={this.state.found} />
             <LighthouseAccessibilityPanel loading={this.state.loading} analysis={this.state.lighthouseAccessibilityForProject} found={this.state.found} />
-            {this.state.allowW3c === 'true' && <W3cPanel loading={this.state.loading} analysis={this.state.analysisForProjectW3c} found={this.state.found} />}
+            <EcoIndexPanel loading={this.state.loading} analysis={this.state.analysisForProjectGreenit} found={this.state.found} />
 
             <DisclaimerPanel />
           </div>

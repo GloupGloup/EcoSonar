@@ -112,21 +112,42 @@ export default class AnalysisPerUrlPanel extends React.PureComponent {
     return (
       <div role='tabpanel'>
         {this.state.ariaAlertForAccessibility && <AccessibilityAlert />}
-        <GreenItPanelPerUrl
-          error={this.state.error}
-          loading={this.state.loading}
-          greenItLastAnalysis={this.state.greenItLastAnalysis}
-          projectName={this.state.projectName}
-          urlName={this.state.selectedUrl}
-          foundAnalysis={this.state.foundAnalysis}
-          foundUrl={this.state.foundUrl}
-          selectedUrl={this.state.selectedUrl}
-          handleChange={this.handleChange}
-          urls={this.state.urls}
 
-        />
-        <LightHousePanelPerUrl error={this.state.error} loading={this.state.loading} lighthouseLastAnalysis={this.state.lighthouseLastAnalysis} projectName={this.state.projectName} urlName={this.state.selectedUrl} />
+        {this.state.foundUrl && (
+          <div className='display-flex-row bordered'>
+            <div className='overview-panel-padded flex-1 display-flex-center'>
+              <div className='url-selector'>
+                <label htmlFor='urls'>Select URL you want to analyze:</label>
+                <select className='select-button' name='url' id='urls' value={this.state.selectedUrl} onChange ={this.handleChange}>
+                  <optgroup label='List of URLs'>
+                    {this.state.urls.map((url, index) => {
+                      return (
+                        <option key={index} value={url}>
+                          {url}
+                        </option>
+                      )
+                    })}
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
+
         {this.state.allowW3c === 'true' && <W3cPanelPerUrl error={this.state.error} loading={this.state.loading} w3cLastAnalysis={this.state.w3cLastAnalysis} projectName={this.state.projectName} urlName={this.state.selectedUrl}/>}
+        <LightHousePanelPerUrl error={this.state.error} loading={this.state.loading} lighthouseLastAnalysis={this.state.lighthouseLastAnalysis} projectName={this.state.projectName} urlName={this.state.selectedUrl} />
+        <GreenItPanelPerUrl
+                  error={this.state.error}
+                  loading={this.state.loading}
+                  greenItLastAnalysis={this.state.greenItLastAnalysis}
+                  projectName={this.state.projectName}
+                  urlName={this.state.selectedUrl}
+                  foundAnalysis={this.state.foundAnalysis}
+                  foundUrl={this.state.foundUrl}
+                  selectedUrl={this.state.selectedUrl}
+                  handleChange={this.handleChange}
+                  urls={this.state.urls}
+                />
         <GraphPanelForUrl
           allowW3c = {this.state.allowW3c}
           loading={this.state.loading}

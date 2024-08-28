@@ -28,21 +28,20 @@ export default function W3CPanelPerProject (props) {
                       {/* FIRST ROW */}
                       <li>
                         <div className='display-flex-row overview-measures-row'>
-                          <ul className='overview-panel-big-padded flex-1 small-text display-flex-center big-spacer-left lighthouse-metric'>
-                            <li className='centered-lighthouse-score'>
-                              <div className='centered-score'>
-                                <p className='title-margin-top'>
-                                  Score :
-                                  {analysisForProjectW3c.score}
-                                </p>
-                                {setLetter(analysisForProjectW3c.grade, true)}
-                              </div>
+                          <div className='overview-panel-big-padded flex-1 small-text display-flex-center big-spacer-left lighthouse-metric'>
+                            <div className='left-part'>
+                              <p className='overview-measures-value  a'>{analysisForProjectW3c.score}</p>
+                              <p className='big-spacer-left little-spacer-right'></p>
+                              Score
                               <div role='textbox' className='tooltip little-spacer-left' tabIndex={0}>
                                 <img src={HelpIcon} alt='' />
-                                <p className='tooltiptext request-tool'>W3C score is calculated from every errors found in W3C analysis.</p>
+                                <p className='tooltiptext request-tool'>
+                                W3C score is calculated from every errors found in W3C analysis.
+                                </p>
                               </div>
-                            </li>
-                          </ul>
+                            </div>
+                            {setLetter(analysisForProjectW3c.grade, true)}
+                          </div>
                         </div>
                       </li>
                       {/* SECOND ROW */}

@@ -32,28 +32,42 @@ export default function LightHousePanelPerUrl (props) {
 
                       {/* FIRST ROW */}
                       <li>
-                        <div className='display-flex-row overview-measures-row'>
-                          <ul className='overview-panel-big-padded flex-1 small-text display-flex-center big-spacer-left lighthouse-metric'>
-                              <li className='centered-lighthouse-score'>
-                              <div className='centered-score'>
-                                  <p className='title-margin-top'>
-                                    Performance:
-                                    {lighthouseLastAnalysis.performance.displayValue}
-                                  </p>
-                                  {setLetter(lighthouseLastAnalysis.performance.complianceLevel, true)}
+                        <ul className='display-flex-row overview-measures-row'>
+                            <li>
+                              <div className='overview-panel-huge-padded flex-1 small-text bordered-right display-flex-center lighthouse-metric'>
+                                <div className='left-part'>
+                                  <div className='display-flex-center'>
+                                    <div className='display-flex-column'>
+                                      <span>
+                                        <p className='overview-measures-value  a'>{lighthouseLastAnalysis.performance.displayValue}</p>
+                                      </span>
+                                      <span className='spacer-top'>
+                                        <span> Performance</span>
+                                      </span>
+                                    </div>
+                                  </div>
                                 </div>
-                              </li>
-                              <li className='centered-lighthouse-score'>
-                                <div className='centered-score'>
-                                  <p className='title-margin-top'>
-                                    Accessibility:
-                                    {lighthouseLastAnalysis.accessibility.displayValue}
-                                  </p>
-                                  {setLetter(lighthouseLastAnalysis.accessibility.complianceLevel, true)}
+                                {setLetter(lighthouseLastAnalysis.performance.complianceLevel, true)}
+                              </div>
+                            </li>
+                            <li>
+                              <div className='overview-panel-huge-padded small-text flex-1 display-flex-center lighthouse-metric'>
+                                <div className='left-part'>
+                                  <div className='display-flex-center'>
+                                    <div className='display-flex-column'>
+                                      <span>
+                                        <p className='overview-measures-value  a'>{lighthouseLastAnalysis.accessibility.displayValue}</p>
+                                      </span>
+                                      <span className='spacer-top'>
+                                        <span> Accessibility</span>
+                                      </span>
+                                    </div>
+                                  </div>
                                 </div>
-                              </li>
-                          </ul>
-                        </div>
+                                {setLetter(lighthouseLastAnalysis.accessibility.complianceLevel, true)}
+                              </div>
+                            </li>
+                        </ul>
                       </li>
 
                       {/* SECOND ROW */}

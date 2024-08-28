@@ -39,29 +39,43 @@ export default function LightHousePanelPerProject (props) {
 
                       {/* FIRST ROW */}
                       <li>
-                        <div className='display-flex-row overview-measures-row'>
+                        <ul className='display-flex-row overview-measures-row'>
+                            <li>
+                              <div className='overview-panel-huge-padded flex-1 small-text bordered-right display-flex-center lighthouse-metric'>
+                                <div className='left-part'>
+                                  <div className='display-flex-center'>
+                                    <div className='display-flex-column'>
+                                      <span>
+                                        <p className='overview-measures-value  a'>{lighthousePerformanceForProject.perfScore}</p>
+                                      </span>
+                                      <span className='spacer-top'>
+                                        <span> Performance</span>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                {setLetter(lighthousePerformanceForProject.perfComplianceLevel, true)}
+                              </div>
+                            </li>
 
-                          <ul className='overview-panel-big-padded flex-1 small-text display-flex-center big-spacer-left lighthouse-metric'>
-                              <li className='centered-lighthouse-score'>
-                                <div className='centered-score'>
-                                  <p className='title-margin-top'>
-                                    Performance:
-                                    {lighthousePerformanceForProject.perfScore}
-                                  </p>
-                                  {setLetter(lighthousePerformanceForProject.perfComplianceLevel, true)}
+                            <li>
+                              <div className='overview-panel-huge-padded small-text flex-1 display-flex-center lighthouse-metric'>
+                                <div className='left-part'>
+                                  <div className='display-flex-center'>
+                                    <div className='display-flex-column'>
+                                      <span>
+                                        <p className='overview-measures-value  a'>{lighthouseAccessibilityForProject.accessScore}</p>
+                                      </span>
+                                      <span className='spacer-top'>
+                                        <span> Accessibility</span>
+                                      </span>
+                                    </div>
+                                  </div>
                                 </div>
-                              </li>
-                              <li className='centered-lighthouse-score'>
-                                <div className='centered-score'>
-                                  <p className='title-margin-top'>
-                                    Accessibility:
-                                    {lighthouseAccessibilityForProject.accessScore}
-                                  </p>
-                                  {setLetter(lighthouseAccessibilityForProject.accessComplianceLevel, true)}
-                                </div>
-                              </li>
-                          </ul>
-                        </div>
+                                {setLetter(lighthouseAccessibilityForProject.accessComplianceLevel, true)}
+                              </div>
+                            </li>
+                        </ul>
                       </li>
 
                       {/* SECOND ROW */}
